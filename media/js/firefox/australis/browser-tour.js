@@ -465,7 +465,7 @@ if (typeof Mozilla == 'undefined') {
 
         if (this.tourIsVisible && !this.tourIsAnimating) {
 
-            switch (e.keyCode) {
+            switch (e.which) {
             // esc minimizes the tour
             case 27:
                 this.closeTour();
