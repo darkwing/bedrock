@@ -1,0 +1,21 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "privacy/base-resp.html" %}
+
+{% set doc = load_doc('online-data-tools') %}
+
+{% if doc %}
+  {% do doc.attr(class='section-content') %}
+  {% do doc('h1').addClass('title-shadow-box') %}
+  {% do doc('[itemprop="articleBody"] > section').addClass('highlight').attr('role', 'tablist').attr('aria-multiselectable', 'true') %}
+  {% do doc('[itemprop="articleBody"] > section > section > header').attr('role', 'tab') %}
+  {% do doc('[itemprop="articleBody"] > section > section > ul').attr('role', 'tabpanel') %}
+{% endif %}
+
+{% block page_title %}{% if doc %}{{ doc('h1').html() }}{% else %}{{ _('Cookies &amp; Online Data Tools') }}{% endif %}{% endblock %}
+
+{% block body_id %}privacy-online-data-tools{% endblock %}
+
+{% block article %}{{ doc }}{% endblock %}

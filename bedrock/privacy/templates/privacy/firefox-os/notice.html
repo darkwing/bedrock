@@ -1,0 +1,21 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "privacy/base-resp.html" %}
+
+{% set doc = load_doc('firefox-os-privacy-notice') %}
+
+{% if doc %}
+  {% do doc.attr(class='section-content') %}
+  {% do doc('header').prepend('<img class="logo" src="/media/img/privacy/logo-firefox.png" alt="">') %}
+  {% do doc('section').addClass('highlight').attr('role', 'tablist').attr('aria-multiselectable', 'true') %}
+  {% do doc('section p').attr('role', 'tab') %}
+  {% do doc('section ul').attr('role', 'tabpanel') %}
+{% endif %}
+
+{% block page_title %}{% if doc %}{{ doc('h1').html() }}{% else %}{{ _('Firefox OS Privacy Notice') }}{% endif %}{% endblock %}
+
+{% block body_id %}privacy-firefox-os{% endblock %}
+
+{% block article %}{{ doc }}{% endblock %}
