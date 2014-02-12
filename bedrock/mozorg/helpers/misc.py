@@ -1,6 +1,5 @@
 import urlparse
 from os import path
-from pyquery import PyQuery as pq
 
 from django.conf import settings
 
@@ -416,23 +415,3 @@ def product_url(product, page, channel=None):
         kwargs['product'] = product
 
     return reverse('%s.%s' % (app, page), kwargs=kwargs)
-
-
-@jinja2.contextfunction
-def load_doc(ctx, name):
-    """
-    Load a static file from /media/ and return the document as a PyQuery object
-    for easier manipulation.
-    """
-    locale = getattr(ctx['request'], 'locale', 'en-US')
-    doc_path = path.join(DOCS_PATH, name, locale + '.html')
-
-    if not path.exists(doc_path):
-        doc_path = path.join(DOCS_PATH, name, 'en-US.html')
-
-    try:
-        content = pq(open(doc_path).read().decode('utf-8'))
-    except IOError:
-        content = None
-
-    return content

@@ -4,18 +4,120 @@
 
 {% extends "privacy/base-resp.html" %}
 
-{% set doc = load_doc('online-data-tools') %}
-
-{% if doc %}
-  {% do doc.attr(class='section-content') %}
-  {% do doc('h1').addClass('title-shadow-box') %}
-  {% do doc('[itemprop="articleBody"] > section').addClass('highlight').attr('role', 'tablist').attr('aria-multiselectable', 'true') %}
-  {% do doc('[itemprop="articleBody"] > section > section > header').attr('role', 'tab') %}
-  {% do doc('[itemprop="articleBody"] > section > section > ul').attr('role', 'tabpanel') %}
-{% endif %}
-
 {% block page_title %}{% if doc %}{{ doc('h1').html() }}{% else %}{{ _('Cookies &amp; Online Data Tools') }}{% endif %}{% endblock %}
 
 {% block body_id %}privacy-online-data-tools{% endblock %}
 
-{% block article %}{{ doc }}{% endblock %}
+{% block article %}
+  <article class="section-content" itemscope itemtype="http://schema.org/Article">
+    <header>
+      <h1 itemprop="name" class="title-shadow-box">Cookies &amp; Online Data Tools</h1>
+    </header>
+    <div itemprop="articleBody">
+      <section class="highlight" role="tablist" aria-multiselectable="true">
+        <h2>Things you should know</h2>
+        <section>
+          <header id="tab-overview" role="tab">
+            <h3>Online Data Tools</h3>
+            <p>Mozilla uses certain online tools such as cookies, clear GIFs, web analytics, and social plug-ins to provide you with our products and services as well as opportunities to interact with us.</p>
+          </header>
+          <ul id="tabpanel-overview" role="tabpanel">
+            <li>
+              <section>
+                <h4>What Are Cookies?</h4>
+                <p>A cookie is a string of information that a website stores on your device.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>What Are Clear GIFs?</h4>
+                <p>Clear gifs (also known as web beacons) are used in combination with cookies to help website operators understand how visitors interact with their websites. A clear gif is typically a transparent graphic image that is placed on a website.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>What are Web Analytics?</h4>
+                <p>Web analytics is the collection, reporting, and analysis of data to understand how users interact with websites.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>What are social media plug-ins?</h4>
+                <p>Social media plug-ins are clickable icons to easily share the content of a webpage with your social network. These icons typically share data such as your IP address and the web page address automatically with the social media provider associated with the plug-in.</p>
+              </section>
+            </li>
+          </ul>
+        </section>
+        <hr>
+        <section>
+          <header id="tab-use" role="tab">
+            <h3>How Does Mozilla Use Online Data Tools?</h3>
+            <p>We use this information solely to offer and improve our products, services, and communications.</p>
+          </header>
+          <ul id="tabpanel-use" role="tabpanel">
+            <li>
+              <section>
+                <h4>Enabling Products & Services</h4>
+                <p>We use cookies to enhance functionality of certain products and services. For example, cookies are used to remember your Firefox language preference and Firefox add-ons. They also assist with user sign-in and authentication, for example, so that you can bypass entering your passwords on websites that use Persona.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>Improving User Experience</h4>
+                <p>We use cookies, clear GIFs, and web analytics to understand in the aggregate how users engage with our products, services, and communications on our websites, online campaigns, snippets, devices, and other platforms.</p>
+              </section>
+            </li>
+          </ul>
+        </section>
+        <hr>
+        <section>
+          <header id="tab-share" role="tab">
+            <h3>How Does Mozilla Share this Information?</h3>
+            <p>We occasionally receive or share certain information with our vendors and partners. We do not use or share this information to track online movement of particular individuals, and where possible, we implement measures to limit what data is received by third parties.</p>
+          </header>
+          <ul id="tabpanel-share" role="tabpanel">
+            <li>
+              <section>
+                <h4>Sharing Data With Vendors and Partners</h4>
+                <p>See our <a href="/en-US/privacy/">Mozilla Privacy Policy</a> for our practices on sharing information.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>Limiting Data on Social Media Plug-Ins</h4>
+                <p>The social sharing buttons on Mozilla websites are designed not to share data with the social media provider until you specifically click the button.</p>
+              </section>
+            </li>
+          </ul>
+        </section>
+        <hr>
+        <section>
+          <header id="tab-choices" role="tab">
+            <h3>What Are Your Choices?</h3>
+            <p>You can control individual cookie preferences, indicate your cookie preferences to others, and opt-out of Google Analytics.</p>
+          </header>
+          <ul id="tabpanel-choices" role="tabpanel">
+            <li>
+              <section>
+                <h4>Cookie History</h4>
+                <p>You can accept or decline individual cookies in your Firefox preferences in the Tools/Options/Privacy history section. Note that certain features of our products and services may not function properly without the aid of cookies.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>Do Not Track</h4>
+                <p>You can enable Do Not Track in Firefox in the Tools/Options/Privacy section on Tracking. This lets you indicate a preference to third party websites about the way your information is collected and used online.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>Google Analytics</h4>
+                <p>If you do not want data about your visits to Mozilla websites to be collected by Google Analytics, you can install the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a>. The add-on keeps your visits anonymous and prohibits data transmission to Google Analytics.</p>
+              </section>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </article>
+{% endblock %}

@@ -4,18 +4,76 @@
 
 {% extends "privacy/base-resp.html" %}
 
-{% set doc = load_doc('websites-privacy-notice') %}
-
-{% if doc %}
-  {% do doc.attr(class='section-content') %}
-  {% do doc('h1').addClass('title-shadow-box') %}
-  {% do doc('[itemprop="articleBody"] > section').addClass('highlight').attr('role', 'tablist').attr('aria-multiselectable', 'true') %}
-  {% do doc('section section > header').attr('role', 'tab') %}
-  {% do doc('section section > ul').attr('role', 'tabpanel') %}
-{% endif %}
-
 {% block page_title %}{% if doc %}{{ doc('h1').html() }}{% else %}{{ _('Websites Privacy Notice') }}{% endif %}{% endblock %}
 
 {% block body_id %}web-privacy{% endblock %}
 
-{% block article %}{{ doc }}{% endblock %}
+{% block article %}
+  <article class="section-content" itemscope itemtype="http://schema.org/Article">
+    <header>
+      <h1 itemprop="name" class="title-shadow-box">Websites Privacy Notice</h1>
+      <p>We care about your privacy. When Mozilla (that’s us) collects information about you, our <a href="/en-US/privacy/">Mozilla Privacy Policy</a> describes how we handle that information.</p>
+      <p itemprop="description">This privacy notice applies to Mozilla operated websites, which include the domains mozillians.org and mozilla.org. This includes, for example, bugzilla.mozilla.org, reps.mozilla.org, careers.mozilla.org, developers.mozilla.org, support.mozilla.org, addons.mozilla.org, and wiki.mozilla.org.</p>
+    </header>
+    <div itemprop="articleBody">
+      <section class="highlight" role="tablist" aria-multiselectable="true">
+        <h2>Things you should know</h2>
+        <section>
+          <header id="tab-personal-info" role="tab">
+            <h3>Personal Information</h3>
+            <p>We may receive personal information from you based on your interaction with us on social media platforms, if you submit a job application, if you volunteer as a Mozilla community member, or if you submit user feedback or a request to us. Learn More.</p>
+          </header>
+          <ul id="tabpanel-personal-info" role="tabpanel">
+            <li>
+              <section>
+                <h4>Social Media</h4>
+                <p>We may receive personal information about you through interactions on social media networks. This can happen if you engage with our social media accounts on Twitter and Facebook.</p>
+                <p>If you use these networks, their privacy policies apply, and you are encouraged to read them. We try to minimize the personal information we receive from you. We will not repost or retweet content you share with us on social networks without your consent.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>Job Applicants</h4>
+                <p>Applicants for employment with Mozilla are required to give us a name, street address, telephone number, email address, and resume.</p>
+                <p>We use this information to process and evaluate employment applications and to communicate with applicants about employment opportunities. We use a third party vendor to assist us with employment applications. For more information on our data practices with third party vendors, see our <a href="/en-US/privacy/">Mozilla Privacy Policy</a>.</p>
+              </section>
+            </li>
+            <li>
+              <section>
+                <header id="tab-contributors" role="tab">
+                  <h4>Contributors</h4>
+                  <p>Volunteering for Mozilla as a community contributor may require Mozilla and others to communicate with you at the email address that you provide in connection to your contribution and to recognize your efforts. Learn More.</p>
+                </header>
+                <ul id="tabpanel-contributors" role="tabpanel">
+                  <li>If you contribute to Bugzilla, Mozilla Reps, or our code base, then your email address and possibly your name will be publicly available to all internet users. If you create a profile at Mozillians.org, it will be accessible to Mozilla employees and Mozilla contributors. You can edit your profile data at <a href="https://mozillians.org/user/edit">Profile Settings</a>.</li>
+                  <li>We sometimes use contributor information from public sources (such as Bugzilla) in dashboards to visually share aggregated data on the Mozilla community. An example is <a href="https://wiki.mozilla.org/Contribute/Dashboards">https://wiki.mozilla.org/Contribute/Dashboards</a>. If possible, we try to minimize contact information that is publicly displayed.</li>
+                </ul>
+              </section>
+            </li>
+            <li>
+              <section>
+                <h4>User Feedback &amp; Requests</h4>
+                <p>You can provide feedback to us on our products and services on webpages like www.input.mozilla.org or through channels such as email, Bugzilla, IRC, a social media account, our Get Involved page, or through a group like Student Ambassadors. Please minimize the personal information you choose to share on these forums because your comments may be accessible to the public.</p>
+              </section>
+            </li>
+          </ul>
+        </section>
+        <hr>
+        <section>
+          <h3>Automatic Data Collection &amp; Social Media</h3>
+          <p>We use online data tools such as cookies, clear GIFs, and web analytics to provide functionality and help us understand how visitors engage with our websites. Read <a href="/privacy/online-data-tools/">Cookies &amp; Online Data Tools</a> to learn more about our use of these technologies and your choices.</p>
+        </section>
+        <hr>
+        <section>
+          <h3>Marketing and Advertising</h3>
+          <p>Our advertising, SMS, and email marketing may use cookies, clear GIFs, web analytics and social media plug-ins (what we call “Online Data Tools”). Our marketing communications are optional to receive and you can unsubscribe at any time. Visit <a href="/privacy/online-data-tools/">Cookies &amp; Online Data Tools</a> to learn more about your choices when interacting with Online Data Tools.</p>
+        </section>
+        <hr>
+        <section>
+          <h3>Donations and Payment</h3>
+          <p>We may receive aggregated reports on purchases of Mozilla gear and donations to the Mozilla Foundation. We do not receive payment and donation information—which is sent to our third party vendors for processing. . For more information on our data practices with third party vendors, see our <a href="/en-US/privacy/">Mozilla Privacy Policy</a>.</p>
+        </section>
+      </section>
+    </div>
+  </article>
+{% endblock %}
